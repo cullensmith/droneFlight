@@ -10,12 +10,8 @@ def get_cell(x,y):
     return props
 
 def get_forecast(props):
-    gx, gy = props["gridX"],props["gridY"]
-    url = f'https://api.weather.gov/gridpoints/TOP/{gx},{gy}/forecast/hourly'
+    office, gx, gy = props["cwa"],props["gridX"],props["gridY"]
+    url = f'https://api.weather.gov/gridpoints/{office}/{gx},{gy}/forecast/hourly'
     r = s.get(url)
     hourly = r.json()['properties']['periods']
     return hourly
-    # for i in r.json()['properties']['periods']:
-    #     print(i)
- 
-
